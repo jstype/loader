@@ -1,0 +1,48 @@
+{
+  "name": "@jstype/loader",
+  "version": "1.0.0",
+  "description": "An easy way to load modules within a directory, similar to `require-all`",
+  "keywords": [
+    "load",
+    "loader",
+    "require",
+    "include",
+    "require-all",
+    "include-all"
+  ],
+  "homepage": "https://github.com/jstype/loader#readme",
+  "bugs": {
+    "url": "https://github.com/jstype/loader/issues"
+  },
+  "license": "MIT",
+  "author": "jKey Lu <jkeylu@gmail.com> (https://github.com/jkeylu)",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstype/loader.git"
+  },
+  "scripts": {
+    "test": "mocha --compilers ts:ts-node/register test/*.ts",
+    "cover": "nyc --extension .ts --require ts-node/register npm test",
+    "build": "npm run clean && tsc",
+    "prepublish": "npm run build && rimraf \"test/**/*{.js,.js.map,.d.ts}\"",
+    "clean": "rimraf \"*{.js,.js.map,.d.ts}\" \"test/**/*{.js,.js.map,.d.ts}\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.3",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.3",
+    "rimraf": "^2.6.1",
+    "ts-node": "^3.1.0",
+    "typescript": "^2.4.0"
+  },
+  "engines": {
+    "node": ">=6"
+  }
+}
