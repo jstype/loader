@@ -35,12 +35,12 @@
   "dependencies": {},
   "devDependencies": {
     "@types/mocha": "^2.2.41",
-    "@types/node": "^8.0.3",
+    "@types/node": "^8.0.4",
     "mocha": "^3.4.2",
     "nyc": "^11.0.3",
     "rimraf": "^2.6.1",
     "ts-node": "^3.1.0",
-    "typescript": "^2.4.0"
+    "typescript": "^2.4.1"
   },
   "engines": {
     "node": ">=6"

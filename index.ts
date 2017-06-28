@@ -2,7 +2,7 @@ import * as Path from 'path';
 import * as fs from 'fs';
 import * as EventEmitter from 'events';
 
-export interface ClassConstructor {
+export interface ClassConstructor extends Function {
     new (...args: any[]): any;
 }
 
@@ -214,7 +214,7 @@ export class FileLoader extends EventEmitter {
 }
 
 export interface ClassLoaderOptions extends LoaderOptions {
-    exportedClassName?: string;
+    defaultExportedClass?: string;
     instantiationOpts?: any;
 
     getClass?: (moduleInfo: ModuleInfo) => ClassConstructor;
@@ -224,14 +224,14 @@ export interface ClassLoaderOptions extends LoaderOptions {
 }
 
 export class ClassLoader extends FileLoader {
-    exportedClassName = 'default';
+    defaultExportedClass = 'default';
     instantiationOpts: any;
 
     constructor(opts?: ClassLoaderOptions) {
         super(opts);
 
         this.override([
-            'exportedClassName',
+            'defaultExportedClass',
             'instantiationOpts',
             'getClass',
             'processClass',
@@ -254,8 +254,8 @@ export class ClassLoader extends FileLoader {
     }
 
     protected getClass(moduleInfo: ModuleInfo): ClassConstructor {
-        if (this.exportedClassName) {
-            return moduleInfo.module[this.exportedClassName];
+        if (this.defaultExportedClass) {
+            return moduleInfo.module[this.defaultExportedClass];
         } else {
             return moduleInfo.module;
         }
